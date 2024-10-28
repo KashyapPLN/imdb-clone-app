@@ -1,0 +1,24 @@
+.person-details{
+    color:white;
+}
+
+.person-image{
+    height:300px;
+    width: 200px;
+    /* border-radius: 50%; */
+    object-fit: fill;
+    margin-bottom: 30px;     
+}
+
+.person-profile{
+    margin-bottom: 30px;
+}
+.person-details ul{
+    list-style: none;
+}
+
+.person-biograpy{
+    min-height: 300px;
+    display: flex;
+    align-items: center;    
+}

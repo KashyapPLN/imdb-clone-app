@@ -1,0 +1,10 @@
+.login-modal-body-text{ 
+    color:white;
+}
+
+.login-modal-body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}

@@ -1,0 +1,46 @@
+.movie-details{
+    color: white;
+    padding: 20px;
+}
+.movie-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between; 
+}
+.movie-info img{
+    width:200px;
+    height:300px;
+}
+
+.movie-info-overview{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height:300px;
+}
+
+.movie-details ul{
+list-style: none;
+}
+.cast-crew{
+    color:white;
+}
+
+.movie-details-trailer-button{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid lightgrey;
+    background-color:black;
+    color: white;
+    width: 180px;
+    border-radius: 8px;
+    height: 40px;
+    justify-content: center;
+    gap:10px;
+    font-size: 14px;
+    font-weight: 500;
+    
+}

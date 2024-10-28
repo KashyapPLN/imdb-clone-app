@@ -1,0 +1,105 @@
+h5{
+    color: white;
+}
+.heading-symbols{
+    color:gold;
+    font-size: 30px;
+}
+.top-picks,.top-ten,.favourites{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.movie-cards{
+    display:flex;
+    flex-direction: row;
+}
+
+.movie-name{
+    margin-top: 20px;
+    font-weight: 600;
+}
+.movie-rating{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap:10px;
+    font-size: 14px;
+}
+.star{
+    color:gold;
+}
+
+.movie-list {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:80px;
+    padding-bottom: 20px;
+  }
+  
+  .movie-cards {
+    display: flex;
+  }
+  
+  .movie-card {
+    width: 220px;
+    margin: 0 10px;
+    color: white;
+    height:500px;
+    background-color: black;
+    border-radius: 12px;
+    position: relative;
+  }
+  
+  .movie-card img {
+    width: 220px;
+    height: 300px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+  .movie-link{
+    text-decoration: none;
+    color: white;
+  }
+  .movie-card-text{
+    padding: 20px;
+    /* position: relative; */
+  }
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 50px; /* Smaller size for buttons */
+    height: 50px;
+    top: 30%; /* Center buttons vertically */
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    border: 2px solid lightgrey;
+    border-radius: 8px;
+  }
+  
+  .carousel-control-prev {
+    left: 10px; /* Position buttons outside cards */
+  }
+  
+  .carousel-control-next {
+    right: 10px; /* Position buttons outside cards */
+  }
+  .trailer-button{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    background-color:rgb(33 37 42);
+    color: white;
+    width: 180px;
+    border-radius: 8px;
+    height: 40px;
+    justify-content: center;
+    gap:10px;
+    font-size: 14px;
+    font-weight: 500;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
