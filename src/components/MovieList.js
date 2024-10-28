@@ -15,6 +15,8 @@ function MovieList() {
     const [top10ThisWeek, setTop10ThisWeek] = useState([]);
     const [fanFavourites, setFanFavourites] = useState([]);
 
+    useEffect(()=>{console.log(topPicks)},[topPicks])
+
     useEffect(() => {
         async function fetchMovies() {
             try {
