@@ -10,7 +10,7 @@ import EditMovie from './EditMovie';
 
 const BASE_URL = 'https://imdb-clone-backend-slf8.onrender.com';
 
-function MovieList() {
+function MovieList({userName}) {
     const [topPicks, setTopPicks] = useState([]);
     const [top10ThisWeek, setTop10ThisWeek] = useState([]);
     const [fanFavourites, setFanFavourites] = useState([]);
@@ -88,7 +88,7 @@ function MovieList() {
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
-                                            <Button style={{color:'white',padding:0}} variant='text' onClick={handleShow}><MdEdit /></Button>
+                                            {userName!==''&&<Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>}
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                           
                                             {movie.trailerUrl && (
@@ -125,7 +125,7 @@ function MovieList() {
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
-                                            <Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>
+                                            {userName!==''&&<Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>}
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                            
                                             {movie.trailerUrl && (
@@ -162,7 +162,7 @@ function MovieList() {
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
-                                            <Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>
+                                            {userName!==''&&<Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>}
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                           
                                             {movie.trailerUrl && (

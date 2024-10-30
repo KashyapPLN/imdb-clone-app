@@ -121,7 +121,7 @@ async function handleSearch(searchTerm){
       {searchResults && searchResults.length > 0 && (
         <div className="search-results-container" >
           {searchResults.map((result) => (
-            <Link key={result.id} to={`/${result.title ?'movie':'person' }/${result.id}`} style={{ textDecoration: 'none', color: 'white' }}>
+            <Link key={result.id} to={`/${result.title ?'movie':'person' }/${result.id}`} onClick={()=>{setTimeout(()=>{setSearchResults('');},1)}}style={{ textDecoration: 'none', color: 'white' }}>
               <div className="search-result-item" style={{ padding: '10px', borderBottom: '1px solid #333' }}>
               <img src={result.profile_path||result.poster_path} alt={result.name || result.title} />
                 <strong>{result.title || result.name}</strong>

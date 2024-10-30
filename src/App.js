@@ -16,7 +16,7 @@ function App() {
       <Container>
       <Navbar userName={userName} setUserName={setUserName} searchResults={searchResults} setSearchResults={setSearchResults}/>
       <Routes>
-          <Route path="/" element={<MovieList />} />
+          <Route path="/" element={<MovieList userName={userName}/>} />
          <Route path="/movie/:id" element={<MovieDetails />} />
           <Route path="/person/:id" element={<PersonDetails />} /> 
           {/* <Route path="/search" element={<SearchResults searchResults={searchResults} />} /> */}
