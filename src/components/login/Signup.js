@@ -4,7 +4,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 import './Login.css';
 
 export default function Signup({setLogin,handleClose}) {
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = 'https://imdb-clone-backend-slf8.onrender.com';
     const [email,setEmail]= useState('');
     const [password,setPassword]= useState('');
     const [name,setName]=useState('');
