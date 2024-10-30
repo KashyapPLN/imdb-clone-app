@@ -4,9 +4,8 @@ import { useParams } from 'react-router-dom';
 import './PersonDetails.css';
 import { Col, Row } from 'react-bootstrap';
 
-const API_KEY = 'c1c31aeb618a794f001e9daa6645d2d0';
-const BASE_URL = 'https://api.themoviedb.org/3';
-const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500'; // Base URL for images
+const BASE_URL = 'http://localhost:4000';
+ // Base URL for images
 
 function PersonDetails() {
     const { id } = useParams();
@@ -17,22 +16,12 @@ function PersonDetails() {
         async function fetchPersonDetails() {
             try {
                 const personResponse = await axios.get(`${BASE_URL}/person/${id}`, {
-                    params: {
-                        api_key: API_KEY,
-                        language: 'en-US',
-                    },
+                  
                 });
 
                 setPerson(personResponse.data);
+                setFilmography(personResponse.data.filmography);   
 
-                const movieCreditsResponse = await axios.get(`${BASE_URL}/person/${id}/movie_credits`, {
-                    params: {
-                        api_key: API_KEY,
-                        language: 'en-US',
-                    },
-                });
-
-                setFilmography(movieCreditsResponse.data.cast);
             } catch (error) {
                 console.error('Error fetching person details:', error);
             }
@@ -52,7 +41,7 @@ function PersonDetails() {
                     <Col md={2} sm={12}>
                         {person.profile_path && (
                             <img
-                                src={`${IMAGE_BASE_URL}${person.profile_path}`}
+                                src={person.profile_path}
                                 alt={`${person.name}'s profile`}
                                 className="person-image"
                             />
@@ -60,16 +49,16 @@ function PersonDetails() {
                     </Col>
                     <Col md={10} sm={12}>
                      <div className='person-biograpy'>
-                        <p>{person.biography}</p>
+                        <p>{person.biography? person.biography : "Biography of the person not available."}</p>
                         </div>
                     </Col>
                 </Row>
             </div>
             <h5>Filmography</h5>
             <ul>
-                {filmography.slice(0, 10).map(movie => (
-                    <li key={movie.id}>{movie.title} ({movie.release_date?.split('-')[0]})</li>
-                ))}
+                {filmography.length>0 ? filmography.slice(0, 10).map((movie,index) => (
+                    <li key={index}>{movie}</li>
+                )):<p className='mt-4'>Filmography not available</p>}
             </ul>
         </div>
     );

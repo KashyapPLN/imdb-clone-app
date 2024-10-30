@@ -7,50 +7,27 @@ import { FaPlay, FaStar } from 'react-icons/fa';
 import { PiLineVerticalBold } from 'react-icons/pi';
 import { MdOutlineNavigateNext } from 'react-icons/md';
 
-const API_KEY = 'c1c31aeb618a794f001e9daa6645d2d0';
-const BASE_URL = 'https://api.themoviedb.org/3';
+const BASE_URL = 'http://localhost:4000';
 
 function MovieList() {
     const [topPicks, setTopPicks] = useState([]);
     const [top10ThisWeek, setTop10ThisWeek] = useState([]);
     const [fanFavourites, setFanFavourites] = useState([]);
 
-    useEffect(()=>{console.log(topPicks)},[topPicks])
-
     useEffect(() => {
         async function fetchMovies() {
             try {
                 // Fetch Top Picks
-                const topPicksResponse = await axios.get(`${BASE_URL}/movie/popular`, {
-                    params: {
-                        api_key: API_KEY,
-                        language: 'en-US',
-                        page: 1,
-                    },
-                });
-                const topPicksWithTrailers = await fetchTrailers(topPicksResponse.data.results);
-                setTopPicks(topPicksWithTrailers);
+                const topPicksResponse = await axios.get(`${BASE_URL}/movie/popular`);
+                setTopPicks(topPicksResponse.data);
 
                 // Fetch Top 10 on IMDb This Week
-                const topRatedResponse = await axios.get(`${BASE_URL}/movie/top_rated`, {
-                    params: {
-                        api_key: API_KEY,
-                        language: 'en-US',
-                        page: 1,
-                    },
-                });
-                const top10WithTrailers = await fetchTrailers(topRatedResponse.data.results.slice(0, 10));
-                setTop10ThisWeek(top10WithTrailers); // Store the data for Top 10
+                const top10Response = await axios.get(`${BASE_URL}/movie/topRated`);
+                setTop10ThisWeek(top10Response.data);
 
                 // Fetch Fan Favourites
-                const trendingResponse = await axios.get(`${BASE_URL}/trending/movie/week`, {
-                    params: {
-                        api_key: API_KEY,
-                        language: 'en-US',
-                    },
-                });
-                const fanFavouritesWithTrailers = await fetchTrailers(trendingResponse.data.results);
-                setFanFavourites(fanFavouritesWithTrailers);
+                const fanFavouritesResponse = await axios.get(`${BASE_URL}/movie/trending`);
+                setFanFavourites(fanFavouritesResponse.data);
             } catch (error) {
                 console.error('Error fetching movies:', error);
             }
@@ -58,25 +35,6 @@ function MovieList() {
 
         fetchMovies();
     }, []);
-
-    // Function to fetch trailers for a list of movies
-    async function fetchTrailers(movies) {
-        const moviesWithTrailers = await Promise.all(
-            movies.map(async (movie) => {
-                const trailerResponse = await axios.get(`${BASE_URL}/movie/${movie.id}/videos`, {
-                    params: {
-                        api_key: API_KEY,
-                        language: 'en-US',
-                    },
-                });
-                const trailer = trailerResponse.data.results.find(
-                    (video) => video.type === 'Trailer' && video.site === 'YouTube'
-                );
-                return { ...movie, trailerUrl: trailer ? `https://www.youtube.com/watch?v=${trailer.key}` : null };
-            })
-        );
-        return moviesWithTrailers;
-    }
 
     // Function to chunk the array into groups of 6 and ensure last slide is filled
     const chunkArray = (array, chunkSize) => {
@@ -101,7 +59,7 @@ function MovieList() {
     };
 
     const topPicksChunks = chunkArray(topPicks, 5);
-    const top10Chunks = chunkArray(top10ThisWeek, 5); // Correctly chunk Top 10 movies
+    const top10Chunks = chunkArray(top10ThisWeek, 5);
     const fanFavouritesChunks = chunkArray(fanFavourites, 5);
 
     return (
@@ -116,13 +74,13 @@ function MovieList() {
                                     <div key={movie.id} className="movie-card">
                                         <Link className='movie-link' to={`/movie/${movie.id}`}>
                                             <img
-                                                src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                                                src={movie.poster_path}
                                                 alt={movie.title}
                                             />
                                         </Link>
                                         <div className='movie-card-text'>
-                                        <div className='movie-rating'>
-                                               <FaStar className='star'/>
+                                            <div className='movie-rating'>
+                                                <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                           
@@ -143,7 +101,7 @@ function MovieList() {
             <div className='top-ten'>
                 <h5><PiLineVerticalBold className='heading-symbols'/>Top 10 on IMDb This Week  <MdOutlineNavigateNext className='heading-symbols'/></h5>
                 <Carousel controls={true} indicators={false}>
-                    {top10Chunks.map((chunk, index) => ( // Ensure Top 10 is properly chunked
+                    {top10Chunks.map((chunk, index) => (
                         <Carousel.Item key={index}>
                             <div className="movie-cards d-flex justify-content-between">
                                 {chunk.map((movie) => (
@@ -155,7 +113,7 @@ function MovieList() {
                                             />
                                         </Link>
                                         <div className='movie-card-text'>
-                                        <div className='movie-rating'>
+                                            <div className='movie-rating'>
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
@@ -189,7 +147,7 @@ function MovieList() {
                                             />
                                         </Link>
                                         <div className='movie-card-text'>
-                                        <div className='movie-rating'>
+                                            <div className='movie-rating'>
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>

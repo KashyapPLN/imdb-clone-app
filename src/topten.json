@@ -17,7 +17,7 @@
         "video": false,
         "vote_average": 8.707,
         "vote_count": 27016,
-        "trailerUrl":"https://www.youtube.com/watch?v=PLl99DlL6b4"
+        "trailerUrl": "https://www.youtube.com/watch?v=PLl99DlL6b4"
     },
     {
         "adult": false,
@@ -37,9 +37,9 @@
         "video": false,
         "vote_average": 8.7,
         "vote_count": 20516,
-        "trailerUrl":"https://www.youtube.com/watch?v=Ew9ngL1GZvs"
+        "trailerUrl": "https://www.youtube.com/watch?v=Ew9ngL1GZvs"
     },
-   {
+    {
         "adult": false,
         "backdrop_path": "/v9acaWVVFdZT5yAU7J2QjwfhXyD.jpg",
         "genre_ids": [
@@ -58,7 +58,7 @@
         "video": false,
         "vote_average": 8.604,
         "vote_count": 1805,
-        "trailerUrl":"https://www.youtube.com/watch?v=VUCNBAmse04"
+        "trailerUrl": "https://www.youtube.com/watch?v=VUCNBAmse04"
     },
     {
         "adult": false,
@@ -78,9 +78,9 @@
         "video": false,
         "vote_average": 8.573,
         "vote_count": 12375,
-        "trailerUrl":"https://www.youtube.com/watch?v=7pfqivkYUlE"
+        "trailerUrl": "https://www.youtube.com/watch?v=7pfqivkYUlE"
     },
-   {
+    {
         "adult": false,
         "backdrop_path": "/zb6fM1CX41D9rF9hdgclu0peUmy.jpg",
         "genre_ids": [
@@ -99,9 +99,9 @@
         "video": false,
         "vote_average": 8.6,
         "vote_count": 15783,
-        "trailerUrl":"https://www.youtube.com/watch?v=mxphAlJID9U"
+        "trailerUrl": "https://www.youtube.com/watch?v=mxphAlJID9U"
     },
-  {
+    {
         "adult": false,
         "backdrop_path": "/qqHQsStV6exghCM7zbObuYBiYxw.jpg",
         "genre_ids": [
@@ -118,9 +118,9 @@
         "video": false,
         "vote_average": 8.5,
         "vote_count": 8588,
-        "trailerUrl":"https://www.youtube.com/watch?v=TEN-2uTi2c0"
+        "trailerUrl": "https://www.youtube.com/watch?v=TEN-2uTi2c0"
     },
-   {
+    {
         "adult": false,
         "backdrop_path": "/6oaL4DP75yABrd5EbC4H2zq5ghc.jpg",
         "genre_ids": [
@@ -139,9 +139,9 @@
         "video": false,
         "vote_average": 8.5,
         "vote_count": 16424,
-        "trailerUrl":"https://www.youtube.com/watch?v=GAp2_0JJskk"
+        "trailerUrl": "https://www.youtube.com/watch?v=GAp2_0JJskk"
     },
-  {
+    {
         "adult": false,
         "backdrop_path": "/90ez6ArvpO8bvpyIngBuwXOqJm5.jpg",
         "genre_ids": [
@@ -160,9 +160,9 @@
         "video": false,
         "vote_average": 8.5,
         "vote_count": 4431,
-        "trailerUrl":"https://www.youtube.com/watch?v=oIZ4U21DRlM"
+        "trailerUrl": "https://www.youtube.com/watch?v=oIZ4U21DRlM"
     },
-   {
+    {
         "adult": false,
         "backdrop_path": "/nMKdUUepR0i5zn0y1T4CsSB5chy.jpg",
         "genre_ids": [
@@ -182,9 +182,9 @@
         "video": false,
         "vote_average": 8.515,
         "vote_count": 32764,
-        "trailerUrl":"https://www.youtube.com/watch?v=LDG9bisJEaI"
+        "trailerUrl": "https://www.youtube.com/watch?v=LDG9bisJEaI"
     },
-{
+    {
         "adult": false,
         "backdrop_path": "/vxJ08SvwomfKbpboCWynC3uqUg4.jpg",
         "genre_ids": [
@@ -203,7 +203,6 @@
         "video": false,
         "vote_average": 8.5,
         "vote_count": 17336,
-        "trailerUrl":"https://www.youtube.com/watch?v=Bg7epsq0OIQ"
+        "trailerUrl": "https://www.youtube.com/watch?v=Bg7epsq0OIQ"
     }
-    
 ]

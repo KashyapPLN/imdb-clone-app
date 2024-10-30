@@ -5,8 +5,7 @@ import './MovieDetails.css';
 import { Col, Row } from 'react-bootstrap';
 import { FaPlay } from 'react-icons/fa';
 
-const API_KEY = 'c1c31aeb618a794f001e9daa6645d2d0';
-const BASE_URL = 'https://api.themoviedb.org/3';
+const BASE_URL = 'http://localhost:4000';
 
 function MovieDetails() {
     const { id } = useParams();
@@ -19,43 +18,26 @@ function MovieDetails() {
     useEffect(() => {
         async function fetchMovieDetails() {
             try {
-                const movieResponse = await axios.get(`${BASE_URL}/movie/${id}`, {
-                    params: {
-                        api_key: API_KEY,
-                        language: 'en-US',
-                    },
+                const movieResponse = await axios.get(`${BASE_URL}/movie/all/${id}`, {
+                    
                 });
-
+       
                 setMovie(movieResponse.data);
-
-                const creditsResponse = await axios.get(`${BASE_URL}/movie/${id}/credits`, {
-                    params: {
-                        api_key: API_KEY,
-                        language: 'en-US',
-                    },
+                setTrailerUrl(movieResponse.data.trailerUrl);
+                const creditsResponse = await axios.get(`${BASE_URL}/movie-details/${id}`, {
+                  
                 });
 
                 setCast(creditsResponse.data.cast);
 
-                const producerInfo = creditsResponse.data.crew.find(member => member.job === 'Producer');
+                const producerInfo = creditsResponse.data.producer;
                 setProducer(producerInfo);
 
-                const directorInfo = creditsResponse.data.crew.find(member => member.job === 'Director');
+                const directorInfo = creditsResponse.data.director;
                 setDirector(directorInfo);
-
-                // Fetch the trailer data
-                const videosResponse = await axios.get(`${BASE_URL}/movie/${id}/videos`, {
-                    params: {
-                        api_key: API_KEY,
-                        language: 'en-US',
-                    },
-                });
-
-                // Find the first trailer
-                const trailer = videosResponse.data.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
-                if (trailer) {
-                    setTrailerUrl(`https://www.youtube.com/watch?v=${trailer.key}`);
-                }
+             
+              
+               
             } catch (error) {
                 console.error('Error fetching movie details:', error);
             }
@@ -72,7 +54,7 @@ function MovieDetails() {
                 <Row>
                     <Col md={4} sm={12}>
                         <img
-                            src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                            src={movie.poster_path}
                             alt={movie.title}
                         />
                     </Col>
@@ -93,7 +75,8 @@ function MovieDetails() {
             </div>
             <p>
                 Director : {director ? (
-                    <Link className='cast-crew' to={`/person/${director.id}`}>{director.name}</Link>
+                    // <Link className='cast-crew' to={`/person/${director.id}`}>{director.name}</Link>
+                    <span>{director.name}</span>
                 ) : 'N/A'}
             </p>
             <p>
