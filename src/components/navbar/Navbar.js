@@ -40,7 +40,10 @@ export default function NavbarComponent({userName,setUserName}) {
     <div className='custom-navbar'>
       <Navbar collapseOnSelect expand="lg" bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="/"><img className='imdb-icon' src={imdbLogo} /></Navbar.Brand>
+          <Navbar.Brand href="/">
+            {/* <img className='imdb-icon' src={imdbLogo} /> */}
+            <span style={{color:"gold",fontWeight:800}}>Imdb-Clone</span>
+            </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
