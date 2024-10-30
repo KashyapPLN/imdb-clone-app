@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Button, Carousel } from 'react-bootstrap';
+import { Button, Carousel, Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './MovieList.css'; // Import your custom CSS file
 import { FaPlay, FaStar } from 'react-icons/fa';
 import { PiLineVerticalBold } from 'react-icons/pi';
 import { MdEdit, MdOutlineNavigateNext } from 'react-icons/md';
+import EditMovie from './EditMovie';
 
 const BASE_URL = 'https://imdb-clone-backend-slf8.onrender.com';
 
@@ -13,6 +14,9 @@ function MovieList() {
     const [topPicks, setTopPicks] = useState([]);
     const [top10ThisWeek, setTop10ThisWeek] = useState([]);
     const [fanFavourites, setFanFavourites] = useState([]);
+    const [show, setShow] = useState(false);
+    const handleShow = () =>  setShow(true);
+    const handleClose = () => setShow(false);
 
     useEffect(() => {
         async function fetchMovies() {
@@ -84,7 +88,7 @@ function MovieList() {
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
-                                            <Button style={{color:'white',padding:0}} variant='text'><MdEdit /></Button>
+                                            <Button style={{color:'white',padding:0}} variant='text' onClick={handleShow}><MdEdit /></Button>
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                           
                                             {movie.trailerUrl && (
@@ -111,7 +115,7 @@ function MovieList() {
                                     <div key={movie.id} className="movie-card">
                                         <Link className='movie-link' to={`/movie/${movie.id}`}>
                                             <img
-                                                src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                                                src={movie.poster_path}
                                                 alt={movie.title}
                                             />
                                         </Link>
@@ -121,7 +125,7 @@ function MovieList() {
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
-                                            <Button style={{color:'white'}} variant='text'><MdEdit /></Button>
+                                            <Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                            
                                             {movie.trailerUrl && (
@@ -148,7 +152,7 @@ function MovieList() {
                                     <div key={movie.id} className="movie-card">
                                         <Link className='movie-link' to={`/movie/${movie.id}`}>
                                             <img
-                                                src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
+                                               src={movie.poster_path}
                                                 alt={movie.title}
                                             />
                                         </Link>
@@ -158,7 +162,7 @@ function MovieList() {
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
-                                            <Button style={{color:'white'}} variant='text'><MdEdit /></Button>
+                                            <Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                           
                                             {movie.trailerUrl && (
@@ -175,6 +179,13 @@ function MovieList() {
                     ))}
                 </Carousel>
             </div>
+            <Modal show={show} onHide={handleClose} centered bg="dark" data-bs-theme="dark">
+        <Modal.Header style={{ borderBottom: 'none' }} closeButton>
+          <Modal.Title style={{ color: 'white' }}>Edit Movie</Modal.Title></Modal.Header>
+        <Modal.Body style={{ color: 'white' }}>
+          <EditMovie />
+        </Modal.Body>
+      </Modal>
         </div>
     );
 }

@@ -45,3 +45,8 @@ height: 100%;
     flex-direction: row;
     gap:20px;
 }
+.add-person{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}

@@ -89,7 +89,7 @@ export default function NavbarComponent({ userName, setUserName }) {
           <Modal.Title style={{ color: 'white' }}>Add Person</Modal.Title>
         </Modal.Header>
         <Modal.Body style={{ color: 'white' }}>
-<AddPerson/>
+<AddPerson handleAddPersonClose={handleAddPersonClose}/>
         </Modal.Body>
       </Modal>
     </div>
