@@ -5,8 +5,7 @@ import './PersonDetails.css';
 import { Col, Row } from 'react-bootstrap';
 
 const BASE_URL = 'http://localhost:4000';
- // Base URL for images
-
+ 
 function PersonDetails() {
     const { id } = useParams();
     const [person, setPerson] = useState(null);

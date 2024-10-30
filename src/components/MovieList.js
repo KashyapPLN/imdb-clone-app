@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Carousel } from 'react-bootstrap';
+import { Button, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './MovieList.css'; // Import your custom CSS file
 import { FaPlay, FaStar } from 'react-icons/fa';
 import { PiLineVerticalBold } from 'react-icons/pi';
-import { MdOutlineNavigateNext } from 'react-icons/md';
+import { MdEdit, MdOutlineNavigateNext } from 'react-icons/md';
 
 const BASE_URL = 'http://localhost:4000';
 
@@ -79,9 +79,12 @@ function MovieList() {
                                             />
                                         </Link>
                                         <div className='movie-card-text'>
+                                        <div className='rating-edit-div'>
                                             <div className='movie-rating'>
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
+                                            </div>
+                                            <Button style={{color:'white',padding:0}} variant='text'><MdEdit /></Button>
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                           
                                             {movie.trailerUrl && (
@@ -113,9 +116,12 @@ function MovieList() {
                                             />
                                         </Link>
                                         <div className='movie-card-text'>
+                                            <div className='rating-edit-div'>
                                             <div className='movie-rating'>
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
+                                            </div>
+                                            <Button style={{color:'white'}} variant='text'><MdEdit /></Button>
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                            
                                             {movie.trailerUrl && (
@@ -147,9 +153,12 @@ function MovieList() {
                                             />
                                         </Link>
                                         <div className='movie-card-text'>
+                                        <div className='rating-edit-div'>
                                             <div className='movie-rating'>
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
+                                            </div>
+                                            <Button style={{color:'white'}} variant='text'><MdEdit /></Button>
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                           
                                             {movie.trailerUrl && (

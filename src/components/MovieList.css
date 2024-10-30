@@ -103,3 +103,9 @@ h5{
     bottom: 20px;
     left: 20px;
   }
+
+  .rating-edit-div{
+    display: flex;
+    flex-direction:row ;
+    justify-content: space-between;
+  }
