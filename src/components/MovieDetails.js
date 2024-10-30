@@ -5,7 +5,7 @@ import './MovieDetails.css';
 import { Col, Row } from 'react-bootstrap';
 import { FaPlay } from 'react-icons/fa';
 
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'https://imdb-clone-backend-slf8.onrender.com';
 
 function MovieDetails() {
     const { id } = useParams();
