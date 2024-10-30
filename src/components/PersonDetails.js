@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import './PersonDetails.css';
 import { Col, Row } from 'react-bootstrap';
 
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'https://imdb-clone-backend-slf8.onrender.com';
  
 function PersonDetails() {
     const { id } = useParams();
