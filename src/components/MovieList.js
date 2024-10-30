@@ -7,7 +7,7 @@ import { FaPlay, FaStar } from 'react-icons/fa';
 import { PiLineVerticalBold } from 'react-icons/pi';
 import { MdEdit, MdOutlineNavigateNext } from 'react-icons/md';
 
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'https://imdb-clone-backend-slf8.onrender.com';
 
 function MovieList() {
     const [topPicks, setTopPicks] = useState([]);
