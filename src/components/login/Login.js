@@ -6,7 +6,7 @@ import {jwtDecode} from 'jwt-decode';
 
 export default function Login({setLogin,handleClose,setUserName}) {
 
-    const apiUrl = process.env.REACT_APP_API_URL;
+    const apiUrl = 'https://imdb-clone-backend-slf8.onrender.com';
     const [email,setEmail]= useState('');
     const [password,setPassword]= useState('');
     
