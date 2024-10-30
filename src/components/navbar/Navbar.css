@@ -40,3 +40,8 @@ height: 100%;
     flex-direction: column;
     gap:20px;
 }
+.person-info{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+}
