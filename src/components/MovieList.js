@@ -14,9 +14,10 @@ function MovieList({userName}) {
     const [topPicks, setTopPicks] = useState([]);
     const [top10ThisWeek, setTop10ThisWeek] = useState([]);
     const [fanFavourites, setFanFavourites] = useState([]);
+    const [editId,setEditId]=useState(null);
     const [show, setShow] = useState(false);
-    const handleShow = () =>  setShow(true);
-    const handleClose = () => setShow(false);
+    const handleShow = (id) => {setEditId(id);setShow(true);} 
+    const handleClose = () =>{setShow(false);setEditId(null);} 
 
     useEffect(() => {
         async function fetchMovies() {
@@ -88,7 +89,7 @@ function MovieList({userName}) {
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
-                                            {userName!==''&&<Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>}
+                                            {userName!==''&&<Button style={{color:'white'}} variant='text' onClick={()=>handleShow(movie.id)}><MdEdit /></Button>}
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                           
                                             {movie.trailerUrl && (
@@ -125,7 +126,7 @@ function MovieList({userName}) {
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
-                                            {userName!==''&&<Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>}
+                                            {userName!==''&&<Button style={{color:'white'}} variant='text' onClick={()=>{handleShow(movie.id)}}><MdEdit /></Button>}
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                            
                                             {movie.trailerUrl && (
@@ -162,7 +163,7 @@ function MovieList({userName}) {
                                                 <FaStar className='star'/>
                                                 <span>{Number(movie.vote_average).toFixed(1)}</span>
                                             </div>
-                                            {userName!==''&&<Button style={{color:'white'}} variant='text' onClick={handleShow}><MdEdit /></Button>}
+                                            {userName!==''&&<Button style={{color:'white'}} variant='text' onClick={()=>{handleShow()}}><MdEdit /></Button>}
                                             </div>
                                             <Link className='movie-link' to={`/movie/${movie.id}`}><p className='movie-name'>{movie.title}</p></Link>                                           
                                             {movie.trailerUrl && (
@@ -183,7 +184,7 @@ function MovieList({userName}) {
         <Modal.Header style={{ borderBottom: 'none' }} closeButton>
           <Modal.Title style={{ color: 'white' }}>Edit Movie</Modal.Title></Modal.Header>
         <Modal.Body style={{ color: 'white' }}>
-          <EditMovie />
+          <EditMovie editId={editId}/>
         </Modal.Body>
       </Modal>
         </div>
