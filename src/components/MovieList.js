@@ -184,7 +184,7 @@ function MovieList({userName}) {
         <Modal.Header style={{ borderBottom: 'none' }} closeButton>
           <Modal.Title style={{ color: 'white' }}>Edit Movie</Modal.Title></Modal.Header>
         <Modal.Body style={{ color: 'white' }}>
-          <EditMovie editId={editId}/>
+          <EditMovie editId={editId}  handleClose={handleClose}/>
         </Modal.Body>
       </Modal>
         </div>

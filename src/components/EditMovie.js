@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 
-export default function EditMovie({ editId }) {
+export default function EditMovie({ editId, handleClose }) {
   const BASE_URL = 'https://imdb-clone-backend-slf8.onrender.com';
   const [movie, setMovie] = useState({
     title: '',
@@ -26,7 +26,7 @@ export default function EditMovie({ editId }) {
         setProducer(creditsResponse.data.producer);
         setDirector(creditsResponse.data.director);
       } catch (error) {
-        console.error('Error fetching movie details:', error);
+        console.error('Error fetching movie details:', error);       
       }
     }
     fetchMovieDetails();
@@ -55,19 +55,19 @@ export default function EditMovie({ editId }) {
 
   const handleEditMovie = async () => {
     try {
-      // Update movie details
+ 
       await axios.put(`${BASE_URL}/movie/all/${editId}`, movie);
-      
-      // Update movie credits (cast, producer, and director)
+    
       await axios.put(`${BASE_URL}/movie-details/${editId}`, {
         cast,
         producer,
         director
       });
-
+      handleClose();
       alert('Movie details updated successfully!');
     } catch (error) {
       console.error('Error updating movie details:', error);
+      handleClose();
       alert('Failed to update movie details.');
     }
   };

@@ -107,7 +107,7 @@ async function handleSearch(searchTerm){
           <Modal.Title style={{ color: 'white' }}>Add Movie</Modal.Title>
         </Modal.Header>
         <Modal.Body style={{ color: 'white' }}>
-          <AddMovie />
+          <AddMovie handleAddClose={handleAddClose}/>
         </Modal.Body>
       </Modal>
       <Modal show={showAddPerson} onHide={handleAddPersonClose} centered bg="dark" data-bs-theme="dark">
@@ -125,7 +125,6 @@ async function handleSearch(searchTerm){
               <div className="search-result-item" style={{ padding: '10px', borderBottom: '1px solid #333' }}>
               <img src={result.profile_path||result.poster_path} alt={result.name || result.title} />
                 <strong>{result.title || result.name}</strong>
-                {/* <p>{result.type === 'movie' ? result.overview : result.biography}</p> */}
               </div>
             </Link>
           ))}
